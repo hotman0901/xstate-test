@@ -25,7 +25,7 @@ function ToggleMachine() {
     const [current, send] = useMachine(fetchMachine);
     return (
         <div className="App">
-            <h1>xstate</h1>
+            <h1>xstate-toggle</h1>
             <button onClick={() => send('TOGGLE')}>toggle</button>
             <div>current: {current.value}</div>
             {current.matches('active') ? 'sucess' : 'fail'}
@@ -33,4 +33,4 @@ function ToggleMachine() {
     );
 }
 
-export default ToggleMachine;;
+export default ToggleMachine;

@@ -98,7 +98,7 @@ function FetchMachine() {
     const { data } = current.context;
     return (
         <div className="App">
-            <h1>xstate</h1>
+            <h1>xstate-fetch</h1>
             <ul>
                 {data.map((row) => (
                     <li
