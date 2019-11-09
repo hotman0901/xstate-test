@@ -12,6 +12,6 @@
     "prettier.arrowParens": "always",
     "prettier.proseWrap": "always",
     "[javascript]": {
-        // "editor.formatOnSave": true
+        "editor.formatOnSave": true
     }
 }
