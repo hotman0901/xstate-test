@@ -1,7 +1,9 @@
-import React from 'react';
-import './App.css';
 import { Machine, assign } from 'xstate';
 import { useMachine } from '@xstate/react';
+import React from 'react';
+
+import './reset.css';
+import './App.css';
 
 const allData = new Array(25).fill(0).map((_val, i) => i + 1);
 const perPage = 10;
@@ -18,6 +20,7 @@ const fetchMachine = Machine({
             // invoke 算是 進入 loading 會先做的事情
             invoke: {
                 id: 'dataLoader',
+                // 可以把它想成 didmount
                 src: (context, _event) => {
                     // callback 用來回調監聽（如果沒有用callback 也可以用 return 值，然後有onDone、onError 機制可以接收）
                     return (callback, _onEvent) => {
@@ -54,7 +57,7 @@ const fetchMachine = Machine({
                 // 當上面觸發 DONE_MORE
                 DONE_MORE: {
                     target: 'more',
-                    // 觸發時候執行的 function
+                    // assign 是回傳到 context 內的 變數
                     actions: assign({
                         data: (context, event) => {
                             console.log('2-1');
@@ -97,7 +100,7 @@ function FetchMachine() {
     // 取得目前的 data
     const { data } = current.context;
     return (
-        <div className="App">
+        <div className="container">
             <h1>xstate-fetch</h1>
             <ul>
                 {data.map((row) => (

@@ -1,7 +1,10 @@
-import React from 'react';
-import './App.css';
 import { Machine } from 'xstate';
 import { useMachine } from '@xstate/react';
+import React from 'react';
+
+import './reset.css';
+import './App.css';
+
 const fetchMachine = Machine({
     id: 'toggle',
     initial: 'inactive',
@@ -24,7 +27,7 @@ const fetchMachine = Machine({
 function ToggleMachine() {
     const [current, send] = useMachine(fetchMachine);
     return (
-        <div className="App">
+        <div className="container">
             <h1>xstate-toggle</h1>
             <button onClick={() => send('TOGGLE')}>toggle</button>
             <div>current: {current.value}</div>
